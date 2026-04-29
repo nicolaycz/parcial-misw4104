@@ -1,0 +1,43 @@
+<div class="container py-4" *ngIf="repositorio">
+  <a routerLink="/repositorios" class="btn btn-link ps-0 mb-3">
+    &larr; Volver a repositorios
+  </a>
+
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <div class="d-flex justify-content-between align-items-start mb-3">
+        <div>
+          <span class="text-muted small font-monospace">#{{ repositorio.id }}</span>
+          <h1 class="card-title mt-1 font-monospace">{{ repositorio.name }}</h1>
+        </div>
+        <span class="lang-badge" [attr.data-lang]="repositorio.language">
+          {{ repositorio.language }}
+        </span>
+      </div>
+
+      <p class="lead text-secondary">{{ repositorio.description }}</p>
+
+      <hr />
+
+      <dl class="row mb-0">
+        <dt class="col-sm-3 text-uppercase small text-muted">Stars</dt>
+        <dd class="col-sm-9 fw-semibold text-warning">
+          &#9733; {{ repositorio.stars }}
+        </dd>
+
+        <dt class="col-sm-3 text-uppercase small text-muted">Lenguaje</dt>
+        <dd class="col-sm-9">{{ repositorio.language }}</dd>
+
+        <dt class="col-sm-3 text-uppercase small text-muted">Creado</dt>
+        <dd class="col-sm-9 font-monospace">{{ repositorio.createdAt }}</dd>
+
+        <dt class="col-sm-3 text-uppercase small text-muted">Owner ID</dt>
+        <dd class="col-sm-9 font-monospace">{{ repositorio.ownerId }}</dd>
+      </dl>
+    </div>
+  </div>
+</div>
+
+<div class="container py-4" *ngIf="!repositorio">
+  <p class="text-muted">Cargando repositorio...</p>
+</div>

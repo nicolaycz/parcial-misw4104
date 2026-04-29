@@ -1,0 +1,72 @@
+.lang-badge {
+  display: inline-block;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  background: #f3f4f6;
+  color: #374151;
+}
+
+.lang-badge[data-lang="TypeScript"] {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.lang-badge[data-lang="JavaScript"] {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.lang-badge[data-lang="Python"] {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.lang-badge[data-lang="Java"] {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.lang-badge[data-lang="Go"] {
+  background: #cffafe;
+  color: #155e75;
+}
+
+.lang-badge[data-lang="Rust"] {
+  background: #ffedd5;
+  color: #9a3412;
+}
+
+.lang-badge[data-lang="Kotlin"] {
+  background: #ede9fe;
+  color: #5b21b6;
+}
+
+.lang-badge[data-lang="Swift"] {
+  background: #ffe4e6;
+  color: #9f1239;
+}
+
+.lang-badge[data-lang="C++"],
+.lang-badge[data-lang="C#"] {
+  background: #e0e7ff;
+  color: #3730a3;
+}
+
+.lang-badge[data-lang="HTML"],
+.lang-badge[data-lang="CSS"] {
+  background: #fce7f3;
+  color: #9d174d;
+}
+
+.lang-badge[data-lang="Shell"],
+.lang-badge[data-lang="YAML"] {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+.lang-badge[data-lang="Ruby"] {
+  background: #fee2e2;
+  color: #b91c1c;
+}
