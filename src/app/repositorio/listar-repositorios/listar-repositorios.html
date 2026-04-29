@@ -1,26 +1,61 @@
-<div class="container">
-  <header class="page-header">
-    <h1>Repositorios</h1>
-    <p class="subtitle">{{ repositorios.length }} repositorios disponibles</p>
+<div class="container py-4">
+  <header class="page-header d-flex justify-content-between align-items-end flex-wrap gap-3">
+    <div>
+      <h1 class="mb-1">Repositorios</h1>
+      <p class="text-muted mb-0">{{ repositoriosFiltrados.length }} de {{ repositorios.length }} repositorios</p>
+    </div>
+    <div class="filtros">
+      <div class="search-wrapper">
+        <i class="bi bi-search search-icon"></i>
+        <input
+          type="text"
+          class="form-control search-input"
+          placeholder="Buscar por nombre o descripción..."
+          [(ngModel)]="filtro" />
+      </div>
+      <select class="form-select lenguaje-select" [(ngModel)]="lenguajeSeleccionado">
+        <option value="">Todos los lenguajes</option>
+        <option *ngFor="let lang of lenguajes" [value]="lang">{{ lang }}</option>
+      </select>
+    </div>
   </header>
 
-  <div class="grid">
-    <a class="card" *ngFor="let repo of repositorios" [routerLink]="['/repositorios', repo.id]">
+  <div class="sort-bar" role="group" aria-label="Ordenar repositorios">
+    <span class="sort-label">Ordenar por:</span>
+    <button type="button" class="sort-btn" [class.active]="orden === 'stars'" (click)="orden = 'stars'">
+      <i class="bi bi-star-fill"></i> Stars
+    </button>
+    <button type="button" class="sort-btn" [class.active]="orden === 'fecha'" (click)="orden = 'fecha'">
+      <i class="bi bi-calendar3"></i> Fecha
+    </button>
+    <button type="button" class="sort-btn" [class.active]="orden === 'nombre'" (click)="orden = 'nombre'">
+      <i class="bi bi-sort-alpha-down"></i> Nombre
+    </button>
+  </div>
+
+  <div class="grid" *ngIf="repositoriosFiltrados.length > 0">
+    <a class="card-repo" *ngFor="let repo of repositoriosFiltrados" [routerLink]="['/repositorios', repo.id]">
       <div class="card-top">
         <span class="repo-id">#{{ repo.id }}</span>
         <span class="lang-badge" [attr.data-lang]="repo.language">{{ repo.language }}</span>
       </div>
       <h2 class="repo-name">{{ repo.name }}</h2>
       <p class="repo-description">{{ repo.description }}</p>
-      <div class="card-footer">
+      <div class="card-footer-row">
         <span class="stars" title="Stars">
-          <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
-            <path fill="currentColor" d="M12 2l2.9 6.9L22 10l-5.5 4.8L18 22l-6-3.6L6 22l1.5-7.2L2 10l7.1-1.1z"/>
-          </svg>
+          <i class="bi bi-star-fill"></i>
           {{ repo.stars }}
         </span>
-        <span class="created-at">{{ repo.createdAt }}</span>
+        <span class="created-at">
+          <i class="bi bi-calendar3"></i>
+          {{ repo.createdAt }}
+        </span>
       </div>
     </a>
+  </div>
+
+  <div *ngIf="repositoriosFiltrados.length === 0 && (filtro || lenguajeSeleccionado)" class="text-center py-5 text-muted">
+    <i class="bi bi-inbox fs-1 d-block mb-2"></i>
+    <p class="mb-0">No se encontraron repositorios con esos filtros</p>
   </div>
 </div>
