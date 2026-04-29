@@ -4,18 +4,27 @@
     <p class="subtitle">{{ usuarios.length }} usuarios disponibles</p>
   </header>
 
-  <div class="grid">
-    <article
-      class="card"
-      *ngFor="let usuario of usuarios"
-      (click)="seleccionarUsuario(usuario)">
-      <img [src]="usuario.avatarUrl" [alt]="usuario.name" class="avatar" />
-      <div class="card-body">
-        <h2 class="name">{{ usuario.name }}</h2>
-        <p class="username">&#64;{{ usuario.username }}</p>
-        <span class="role-badge" [attr.data-role]="usuario.role">{{ usuario.role }}</span>
-        <p class="location">{{ usuario.location }}</p>
-      </div>
-    </article>
+  <div class="layout" [class.with-detalle]="usuarioSeleccionado">
+    <div class="grid">
+      <article
+        class="card"
+        *ngFor="let usuario of usuarios"
+        [class.selected]="usuarioSeleccionado?.id === usuario.id"
+        (click)="seleccionarUsuario(usuario)">
+        <img [src]="usuario.avatarUrl" [alt]="usuario.name" class="avatar" />
+        <div class="card-body">
+          <h2 class="name">{{ usuario.name }}</h2>
+          <p class="username">&#64;{{ usuario.username }}</p>
+          <span class="role-badge" [attr.data-role]="usuario.role">{{ usuario.role }}</span>
+          <p class="location">{{ usuario.location }}</p>
+        </div>
+      </article>
+    </div>
+
+    <app-detalle-usuario
+      *ngIf="usuarioSeleccionado"
+      [usuario]="usuarioSeleccionado"
+      (cerrar)="cerrarDetalle()">
+    </app-detalle-usuario>
   </div>
 </div>

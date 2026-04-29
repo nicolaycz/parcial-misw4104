@@ -1,0 +1,32 @@
+<aside class="detalle" *ngIf="usuario">
+  <button class="close-btn" (click)="onCerrar()" aria-label="Cerrar">&times;</button>
+
+  <div class="detalle-header">
+    <img [src]="usuario.avatarUrl" [alt]="usuario.name" class="detalle-avatar" />
+    <h2 class="detalle-name">{{ usuario.name }}</h2>
+    <p class="detalle-username">&#64;{{ usuario.username }}</p>
+    <span class="detalle-role" [attr.data-role]="usuario.role">{{ usuario.role }}</span>
+  </div>
+
+  <dl class="detalle-list">
+    <div class="detalle-item">
+      <dt>ID</dt>
+      <dd>{{ usuario.id }}</dd>
+    </div>
+    <div class="detalle-item">
+      <dt>Email</dt>
+      <dd>{{ usuario.email }}</dd>
+    </div>
+    <div class="detalle-item">
+      <dt>Ubicación</dt>
+      <dd>{{ usuario.location }}</dd>
+    </div>
+    <div class="detalle-item">
+      <dt>Repositorios</dt>
+      <dd>
+        <span *ngIf="usuario.repoIds.length === 0" class="empty">Sin repositorios</span>
+        <span *ngFor="let repoId of usuario.repoIds" class="repo-chip">#{{ repoId }}</span>
+      </dd>
+    </div>
+  </dl>
+</aside>
