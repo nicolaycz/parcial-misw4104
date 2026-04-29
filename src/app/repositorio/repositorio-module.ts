@@ -7,5 +7,6 @@ import { ListarRepositorios } from './listar-repositorios/listar-repositorios';
 @NgModule({
   declarations: [ListarRepositorios],
   imports: [CommonModule, RepositorioRoutingModule],
+  exports: [ListarRepositorios],
 })
 export class RepositorioModule {}
