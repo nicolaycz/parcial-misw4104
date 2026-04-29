@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, HostListener } from '@angular/core';
 import { Usuario } from '../usuario';
 
 @Component({
@@ -10,6 +10,13 @@ import { Usuario } from '../usuario';
 export class DetalleUsuario {
   @Input() usuario: Usuario | null = null;
   @Output() cerrar = new EventEmitter<void>();
+
+  @HostListener('document:keydown.escape')
+  onEscape(): void {
+    if (this.usuario) {
+      this.cerrar.emit();
+    }
+  }
 
   onCerrar(): void {
     this.cerrar.emit();
