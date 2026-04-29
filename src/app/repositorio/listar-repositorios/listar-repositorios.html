@@ -5,7 +5,7 @@
   </header>
 
   <div class="grid">
-    <article class="card" *ngFor="let repo of repositorios">
+    <a class="card" *ngFor="let repo of repositorios" [routerLink]="['/repositorios', repo.id]">
       <div class="card-top">
         <span class="repo-id">#{{ repo.id }}</span>
         <span class="lang-badge" [attr.data-lang]="repo.language">{{ repo.language }}</span>
@@ -21,6 +21,6 @@
         </span>
         <span class="created-at">{{ repo.createdAt }}</span>
       </div>
-    </article>
+    </a>
   </div>
 </div>
