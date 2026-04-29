@@ -14,34 +14,30 @@
     </div>
   </header>
 
-  <div class="layout" [class.with-detalle]="usuarioSeleccionado">
-    <div>
-      <div class="grid" *ngIf="usuariosFiltrados.length > 0">
-        <article
-          class="card-usuario"
-          *ngFor="let usuario of usuariosFiltrados"
-          [class.selected]="usuarioSeleccionado?.id === usuario.id"
-          (click)="seleccionarUsuario(usuario)">
-          <img [src]="usuario.avatarUrl" [alt]="usuario.name" class="avatar" />
-          <div class="card-body">
-            <h2 class="name">{{ usuario.name }}</h2>
-            <p class="username">&#64;{{ usuario.username }}</p>
-            <span class="role-badge" [attr.data-role]="usuario.role">{{ usuario.role }}</span>
-            <p class="location"><i class="bi bi-geo-alt"></i> {{ usuario.location }}</p>
-          </div>
-        </article>
+  <div class="grid" *ngIf="usuariosFiltrados.length > 0">
+    <article
+      class="card-usuario"
+      *ngFor="let usuario of usuariosFiltrados"
+      [class.selected]="usuarioSeleccionado?.id === usuario.id"
+      (click)="seleccionarUsuario(usuario)">
+      <img [src]="usuario.avatarUrl" [alt]="usuario.name" class="avatar" />
+      <div class="card-body">
+        <h2 class="name">{{ usuario.name }}</h2>
+        <p class="username">&#64;{{ usuario.username }}</p>
+        <span class="role-badge" [attr.data-role]="usuario.role">{{ usuario.role }}</span>
+        <p class="location"><i class="bi bi-geo-alt"></i> {{ usuario.location }}</p>
       </div>
-
-      <div *ngIf="usuariosFiltrados.length === 0 && filtro" class="text-center py-5 text-muted">
-        <i class="bi bi-inbox fs-1 d-block mb-2"></i>
-        <p class="mb-0">No se encontraron usuarios con "{{ filtro }}"</p>
-      </div>
-    </div>
-
-    <app-detalle-usuario
-      *ngIf="usuarioSeleccionado"
-      [usuario]="usuarioSeleccionado"
-      (cerrar)="cerrarDetalle()">
-    </app-detalle-usuario>
+    </article>
   </div>
+
+  <div *ngIf="usuariosFiltrados.length === 0 && filtro" class="text-center py-5 text-muted">
+    <i class="bi bi-inbox fs-1 d-block mb-2"></i>
+    <p class="mb-0">No se encontraron usuarios con "{{ filtro }}"</p>
+  </div>
+
+  <app-detalle-usuario
+    *ngIf="usuarioSeleccionado"
+    [usuario]="usuarioSeleccionado"
+    (cerrar)="cerrarDetalle()">
+  </app-detalle-usuario>
 </div>

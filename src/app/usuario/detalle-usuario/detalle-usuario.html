@@ -1,46 +1,48 @@
-<aside class="detalle" *ngIf="usuario">
-  <button class="close-btn" (click)="onCerrar()" aria-label="Cerrar">
-    <i class="bi bi-x-lg"></i>
-  </button>
+<div class="modal-backdrop" *ngIf="usuario" (click)="onCerrar()">
+  <div class="modal-dialog" (click)="$event.stopPropagation()">
+    <button class="close-btn" (click)="onCerrar()" aria-label="Cerrar">
+      <i class="bi bi-x-lg"></i>
+    </button>
 
-  <div class="detalle-header">
-    <img [src]="usuario.avatarUrl" [alt]="usuario.name" class="detalle-avatar" />
-    <h2 class="detalle-name">{{ usuario.name }}</h2>
-    <p class="detalle-username">&#64;{{ usuario.username }}</p>
-    <span class="detalle-role" [attr.data-role]="usuario.role">{{ usuario.role }}</span>
-  </div>
+    <div class="detalle-header">
+      <img [src]="usuario.avatarUrl" [alt]="usuario.name" class="detalle-avatar" />
+      <h2 class="detalle-name">{{ usuario.name }}</h2>
+      <p class="detalle-username">&#64;{{ usuario.username }}</p>
+      <span class="detalle-role" [attr.data-role]="usuario.role">{{ usuario.role }}</span>
+    </div>
 
-  <ul class="info-list">
-    <li class="info-item">
-      <i class="bi bi-hash info-icon"></i>
-      <div class="info-content">
-        <span class="info-label">ID</span>
-        <span class="info-value">{{ usuario.id }}</span>
-      </div>
-    </li>
-    <li class="info-item">
-      <i class="bi bi-envelope info-icon"></i>
-      <div class="info-content">
-        <span class="info-label">Email</span>
-        <a [href]="'mailto:' + usuario.email" class="info-value info-link">{{ usuario.email }}</a>
-      </div>
-    </li>
-    <li class="info-item">
-      <i class="bi bi-geo-alt info-icon"></i>
-      <div class="info-content">
-        <span class="info-label">Ubicación</span>
-        <span class="info-value">{{ usuario.location }}</span>
-      </div>
-    </li>
-    <li class="info-item">
-      <i class="bi bi-folder2 info-icon"></i>
-      <div class="info-content">
-        <span class="info-label">Repositorios</span>
-        <div class="info-value">
-          <span *ngIf="usuario.repoIds.length === 0" class="empty">Sin repositorios</span>
-          <span *ngFor="let repoId of usuario.repoIds" class="repo-chip">#{{ repoId }}</span>
+    <ul class="info-list">
+      <li class="info-item">
+        <i class="bi bi-hash info-icon"></i>
+        <div class="info-content">
+          <span class="info-label">ID</span>
+          <span class="info-value">{{ usuario.id }}</span>
         </div>
-      </div>
-    </li>
-  </ul>
-</aside>
+      </li>
+      <li class="info-item">
+        <i class="bi bi-envelope info-icon"></i>
+        <div class="info-content">
+          <span class="info-label">Email</span>
+          <a [href]="'mailto:' + usuario.email" class="info-value info-link">{{ usuario.email }}</a>
+        </div>
+      </li>
+      <li class="info-item">
+        <i class="bi bi-geo-alt info-icon"></i>
+        <div class="info-content">
+          <span class="info-label">Ubicación</span>
+          <span class="info-value">{{ usuario.location }}</span>
+        </div>
+      </li>
+      <li class="info-item">
+        <i class="bi bi-folder2 info-icon"></i>
+        <div class="info-content">
+          <span class="info-label">Repositorios</span>
+          <div class="info-value">
+            <span *ngIf="usuario.repoIds.length === 0" class="empty">Sin repositorios</span>
+            <span *ngFor="let repoId of usuario.repoIds" class="repo-chip">#{{ repoId }}</span>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

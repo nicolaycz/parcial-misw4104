@@ -38,27 +38,10 @@
   box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
 }
 
-.layout {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.5rem;
-}
-
-.layout.with-detalle {
-  grid-template-columns: minmax(0, 1fr) 340px;
-  align-items: start;
-}
-
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 1rem;
-}
-
-@media (max-width: 900px) {
-  .layout.with-detalle {
-    grid-template-columns: 1fr;
-  }
 }
 
 .card-usuario {
