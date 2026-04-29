@@ -5,6 +5,7 @@ import { provideHttpClient } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
 import { UsuarioModule } from './usuario/usuario-module';
+import { RepositorioModule } from './repositorio/repositorio-module';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { UsuarioModule } from './usuario/usuario-module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    UsuarioModule
+    UsuarioModule,
+    RepositorioModule
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),
